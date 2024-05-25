@@ -4,3 +4,39 @@
   box-sizing: border-box;
   font-family: monospace;
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  padding-bottom: 10px;
+}
+.main-heading {
+  text-align: center;
+  padding: 50px 0 0 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px;
+  place-items: center;
+}
+.input-box {
+  width: 100%;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+.btn {
+  width: 100px;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.del-btn {
+  background-color: red;
+  color: white;
+}
