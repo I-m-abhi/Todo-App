@@ -3,21 +3,22 @@ import TodoList from "./TodoList";
 
 const InputForm = () => {
   const [todoList, setTodoList] = useState([]);
-  const userNote = useRef();
-  const noteDate = useRef();
+  const userNoteElem = useRef();
+  const noteDateElem = useRef();
 
   const handleAddTodo = (e) => {
     e.preventDefault();
     let currentTodo = {
       noteNo: new Date(),
-      userNote: userNote.current.value,
-      noteDate: noteDate.current.value,
+      userNote: userNoteElem.current.value,
+      noteDate: noteDateElem.current.value,
+      checkStatus: false,
     }
     if(currentTodo.userNote !== '' && currentTodo.noteDate !== ''){
       setTodoList([currentTodo, ...todoList]);
+      userNoteElem.current.value = '';
+      noteDateElem.current.value = '';
     }
-    userNote.current.value = '';
-    noteDate.current.value = '';
   }
 
   return (
@@ -25,12 +26,12 @@ const InputForm = () => {
       <form className='input-form container' >
         <div className='grid'>
           <input
-            ref={userNote}
+            ref={userNoteElem}
             className='input'
             name="userNote"
             type="text" />
           <input
-            ref={noteDate}
+            ref={noteDateElem}
             className='input'
             name="noteDate"
             type="date" />

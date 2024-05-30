@@ -19,7 +19,9 @@
   grid-template-columns: 3fr 1fr 1fr;
   gap: 20px;
   padding: 10px;
-  place-items: center;
+}
+.grid-four-col {
+  grid-template-columns: .1fr 2.9fr 1fr 1fr;
 }
 .input-box {
   width: 100%;
@@ -39,4 +41,21 @@
 .del-btn {
   background-color: red;
   color: white;
+}
+.checkbox {
+  width: 15px;
+}
+.list-items {
+  display: grid;
+  align-items: center;
+}
+.list-header {
+  display: flex;
+  gap: 25px;
+  padding: 0px 10px;
+  align-items: center;
+
+  & .del-btn {
+    width: 200px;
+  }
 }
