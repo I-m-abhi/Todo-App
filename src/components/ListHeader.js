@@ -1,28 +1,15 @@
-import { useState } from "react";
+import { useGlobalContext } from "../todoContext";
 
-const ListHeader = ({ todoList, setTodoList }) => {
-  const [selectAll, setSelectAll] = useState(false);
-
-  const selectAllCheckBox = ()=> {
-    setSelectAll(!selectAll);
-    todoList.forEach((currTodo, index, todoArr)=>{
-      currTodo.checkStatus = !selectAll;
-      setTodoList(todoArr);
-    })
-  }
-  const handleMultipleDlt = ()=> {
-    const newTodoList = todoList.filter((todo)=>todo.checkStatus === false);
-    setTodoList(newTodoList)
-  }
+const ListHeader = () => {
+  const {todoList, selectAllCheckBox, handleMultipleDlt} = useGlobalContext();
 
   return (
     <>
-    {
-      todoList.length >= 2 &&
+      {
+        todoList.length >= 2 &&
         <div className="list-header">
           <input
             onClick={selectAllCheckBox}
-            defaultChecked={selectAll}
             type="checkbox"
             className="checkbox" />
           <div>Select all</div>
@@ -32,7 +19,7 @@ const ListHeader = ({ todoList, setTodoList }) => {
             Delete Multiple 🗑️
           </button>
         </div>
-    }
+      }
     </>
   )
 };

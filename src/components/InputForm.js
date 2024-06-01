@@ -1,25 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect } from "react";
 import TodoList from "./TodoList";
+import { useGlobalContext } from "../todoContext";
 
 const InputForm = () => {
-  const [todoList, setTodoList] = useState([]);
-  const userNoteElem = useRef();
-  const noteDateElem = useRef();
-
-  const handleAddTodo = (e) => {
-    e.preventDefault();
-    let currentTodo = {
-      noteNo: new Date(),
-      userNote: userNoteElem.current.value,
-      noteDate: noteDateElem.current.value,
-      checkStatus: false,
-    }
-    if(currentTodo.userNote !== '' && currentTodo.noteDate !== ''){
-      setTodoList([currentTodo, ...todoList]);
-      userNoteElem.current.value = '';
-      noteDateElem.current.value = '';
-    }
-  }
+  const {todoList, handleAddTodo, userNoteElem, noteDateElem } = useGlobalContext();
+  
+  useEffect(() => {
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <>
@@ -46,7 +34,7 @@ const InputForm = () => {
         (todoList.length === 0) ?
           <p className="main-heading">List down your first note</p>
           :
-          <TodoList todoList={todoList} setTodoList={setTodoList} />
+          <TodoList />
       }
     </>
   );

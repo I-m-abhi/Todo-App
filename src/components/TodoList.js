@@ -1,18 +1,12 @@
+import { useGlobalContext } from "../todoContext";
 import ListHeader from "./ListHeader";
 
-const TodoList = ({ todoList, setTodoList }) => {
-console.log('rendered')
-  const handleDltTodo = (noteNo) => {
-    const updateTodoList = todoList.filter((item) => item.noteNo !== noteNo);
-    setTodoList(updateTodoList);
-  }
-  const handleCheckBox = (listItem) => {
-    listItem.checkStatus = !listItem.checkStatus;
-  }
+const TodoList = () => {
+  const {todoList, handleDltTodo, handleCheckBox} = useGlobalContext();
 
   return (
     <div className="todo-list container">
-      <ListHeader todoList={todoList} setTodoList={setTodoList}/>
+      <ListHeader />
       {todoList.map((listItem) => {
         return (
           <div className='grid grid-four-col' key={listItem.noteNo}>
